@@ -2,6 +2,7 @@ package com.zonaro.financasapp.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.zonaro.financasapp.exceptions.RegraNegocioException;
 import com.zonaro.financasapp.model.entity.Usuario;
@@ -27,9 +28,12 @@ public class UsuarioServiceImpl implements UsuarioService{
 	}
 
 	@Override
+	@Transactional // Salvar no banco e commita
 	public Usuario salvarUsuario(Usuario usuario) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		validarEmail(usuario.getEmail());
+		
+		return repository.save(usuario);
 	}
 
 	@Override
