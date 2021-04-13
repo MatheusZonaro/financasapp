@@ -1,4 +1,4 @@
-package com.zonaro.financasapp.model.entity;
+package com.zonaro.financasapp.model.enums;
 
 public enum TipoLancamento {
 	
